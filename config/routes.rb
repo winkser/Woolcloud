@@ -4,11 +4,11 @@ Rails.application.routes.draw do
 
   get 'pages/index'
 
-  get 'pages/friends'
+  get 'pages/friends', to: "friends#friends", as: "pages_friends"
  
-  post 'pages/friends', to: "pages#friends_add", as: "pages_friends_add"
+  post 'pages/friends', to: "friends#friends_add", as: "pages_friends_add"
 
-  delete 'pages/friends/:id', to: "pages#friends_drop", as: "pages_friends_drop" 
+  delete 'pages/friends/:id', to: "friends#friends_drop", as: "pages_friends_drop" 
 
   get 'pages/messages'
 
