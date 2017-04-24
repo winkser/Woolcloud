@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cord_x: 1.5
+  cord_y: 1.5
+
+two:
+  cord_x: 1.5
+  cord_y: 1.5

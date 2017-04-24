@@ -1,4 +1,26 @@
 <%= render 'pages/header' %>
 
 <h1>Pages#friends</h1>
-<p>Find me in app/views/pages/friends.html.erb</p>
+<div class="container" style="background:#a6a6a6;">
+<h3>Your friends:</h3>
+<% @friends.each do |fr| %>
+<%= link_to "delete", pages_friends_drop_path(fr.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= fr.inspect %><br>
+<% end %>
+</div>
+
+<div class="container" style="background:#a6a6a6;">
+<h3>Add friends:</h3>
+<%= form_for :friend do |f| %>
+<%= f.text_field :name %>
+<%= f.submit "Add" %>
+<% end %>
+<%= @error %>
+</div>
+
+<div class="container" style="background:#a6a6a6;">
+<h3>All users:</h3>
+<% @users.each do |f| %>
+<%= f.inspect %><br>
+<% end %>
+</div>
