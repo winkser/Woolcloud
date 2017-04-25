@@ -1,5 +1,5 @@
 class FriendsController < ApplicationController
-
+before_action :authenticate_user!
   def friends
    @users = User.all
    @user = User.find_by_email(current_user.email)

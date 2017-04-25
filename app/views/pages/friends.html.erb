@@ -12,6 +12,7 @@
 <div class="container" style="background:#a6a6a6;">
 <h3>Add friends:</h3>
 <%= form_for :friend do |f| %>
+<%= f.label "Type email:" %>
 <%= f.text_field :name %>
 <%= f.submit "Add" %>
 <% end %>

@@ -1,4 +1,41 @@
 <%= render 'pages/header' %>
 
 <h1>Pages#cloud</h1>
-<p>Find me in app/views/pages/cloud.html.erb</p>
+<h2>Navigation:"<%= @position %>"</h2>
+<%= link_to "Home", pages_cloud_home_path %>
+<%= link_to "Back", pages_cloud_back_path %>
+<%= form_tag({controller: "clouds", action: "newfolder"}, method: "get") do %>
+        <%= text_field_tag(:namefolder) %>
+        <%= submit_tag("Create") %>
+        <% end %>
+<br>
+
+<div class = "container" style = "background:#a6a6a6;">
+<table>
+ <caption>All files:</caption>
+ <tr>
+  <th>Type:</th>
+  <th>Name:</th>
+  <th>Size:</th>
+  <th>Data:</th>
+  <th>Action:</th>
+ </tr>
+<% @list.each do |file| %>
+ <tr>
+ <td>type</td>
+ <td><%= link_to file, "/pages/cloud/open/#{file}" %></td>
+ <td>size</td>
+ <td>data</td>
+ <td><%= link_to "Delete", "/pages/cloud/delete/#{file}" %><br></td>
+ </tr>
+<% end %>
+</table>
+</div>
+
+<h3>Download file:</h3>
+        <%= form_tag({controller: "clouds", action: "upload"}, :multipart => true) do %>
+        <%= label_tag(:upfile, "Upload file:") %>
+        <%= file_field_tag(:upfile) %>
+        <%= submit_tag("Upload") %>
+        <% end %>
+
