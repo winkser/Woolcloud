@@ -1,16 +1,25 @@
 <%= render 'pages/header' %>
 
 <h1>Pages#cloud</h1>
-<h2>Navigation:"<%= @position %>"</h2>
+<h2>Navigation:</h2>
 <%= link_to "Home", pages_cloud_home_path %>
 <%= link_to "Back", pages_cloud_back_path %>
-<%= form_tag({controller: "clouds", action: "newfolder"}, method: "get") do %>
+<h3>Action:</h3>
+        <%= form_tag({controller: "clouds", action: "newfolder"}, method: "get") do %>
+        <%= label_tag "Create folder:" %>
         <%= text_field_tag(:namefolder) %>
         <%= submit_tag("Create") %>
         <% end %>
 <br>
+        <%= form_tag({controller: "clouds", action: "upload"}, :multipart => true) do %>
+        <%= label_tag(:upfile, "Upload file:") %>
+        <%= file_field_tag(:upfile) %>
+        <%= submit_tag("Upload") %>
+        <% end %>
+<br>
 
 <div class = "container" style = "background:#a6a6a6;">
+ <h3>Trace:"<%= @position %>"</h3>
 <table>
  <caption>All files:</caption>
  <tr>
@@ -22,20 +31,17 @@
  </tr>
 <% @list.each do |file| %>
  <tr>
- <td>type</td>
+ <td><%= File::ftype("#{@file_path}/#{file}") %></td>
  <td><%= link_to file, "/pages/cloud/open/#{file}" %></td>
- <td>size</td>
- <td>data</td>
+ <td><% @size = File::size("#{@file_path}/#{file}") %>
+ <%= if(@size < 1024) then @size.to_s+"Б" end %>
+ <%= if(@size >= 1024 && @size < 1048576) then @size.fdiv(1024).to_s+"кБ" end %>
+ <%= if(@size >= 1048576) then @size.div(1048576).to_s+"мБ" end %></td>
+ <td><%= File::mtime("#{@file_path}/#{file}") %></td>
  <td><%= link_to "Delete", "/pages/cloud/delete/#{file}" %><br></td>
  </tr>
 <% end %>
 </table>
 </div>
 
-<h3>Download file:</h3>
-        <%= form_tag({controller: "clouds", action: "upload"}, :multipart => true) do %>
-        <%= label_tag(:upfile, "Upload file:") %>
-        <%= file_field_tag(:upfile) %>
-        <%= submit_tag("Upload") %>
-        <% end %>
 
