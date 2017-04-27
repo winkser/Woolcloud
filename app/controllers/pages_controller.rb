@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 before_action :authenticate_user!
   def index
+   @user = User.find_by_email(current_user[:email])
   end
 
   def friends  
@@ -19,5 +20,7 @@ before_action :authenticate_user!
   end
 
   def settings
+   @current_user = current_user
+   @user = User.new
   end
 end

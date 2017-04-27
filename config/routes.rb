@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   
 
   get 'pages/settings'
+  post 'pages/settings/create/avatar', to: "settings#create_avatar", as: "pages_settings_create_avatar"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

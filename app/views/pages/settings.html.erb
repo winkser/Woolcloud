@@ -1,4 +1,10 @@
 <%= render 'pages/header' %>
 
-<h1>Pages#settings</h1>
-<p>Find me in app/views/pages/settings.html.erb</p>
+<h1>Settings</h1>
+<h4>Settings avatar:</h4>
+<%= image_tag @current_user.avatar.url(:medium) %><br>
+<%= form_for @user, url: pages_settings_create_avatar_path, html: { multipart: true } do |form| %>
+  <%= form.label "Upload avatar:" %>
+  <%= form.file_field :avatar %>
+  <%= form.submit "Change!" %>
+<% end %>
