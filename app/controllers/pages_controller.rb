@@ -13,7 +13,7 @@ before_action :authenticate_user!
   def friends_on_map
   end
 
-  def gallery
+  def galleries
     @user = User.find_by_email(current_user[:email])
     @images = @user.images.all
     @image = @user.images.build

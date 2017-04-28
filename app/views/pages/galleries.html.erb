@@ -1,0 +1,16 @@
+<%= render 'pages/header' %>
+<h1>Gallery</h1>
+<%= form_for [@user, @user.images.build], :url => pages_galleries_create_image_path do |f| %>
+  <%= f.label "Upload image:" %>
+  <%= f.file_field :file %>
+  <%= f.submit "Upload" %>
+<% end %>
+
+<ul class = "thumbnails">
+<% @images.each do |image| %>
+<li class = "span4">
+<%= link_to image_tag(image.file.url(:thumbnail)), image.file.url(:original), :class => "thumbnail", :rel => "hermitage" %>
+<%= link_to "[X]", "galleries/delete/#{image.id}", :title => "Delete image" %>
+</li>
+<% end %>
+</ul>
