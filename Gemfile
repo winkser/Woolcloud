@@ -24,6 +24,8 @@ gem 'coffee-rails', '~> 4.2'
  gem 'devise'
 # Use paperclip
  gem 'paperclip'
+# Use hermitage for gallery
+ gem 'hermitage'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

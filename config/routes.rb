@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'pages/friends_on_map'
 
   get 'pages/gallery'
+  post 'pages/galleries/create/image', to: "galleries#create_image", as: "pages_galleries_create_image"
 
   get 'pages/cloud', to: "clouds#cloud", as: "pages_cloud"
   get 'pages/cloud/home', to: "clouds#home", as: "pages_cloud_home"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170427132017) do
+ActiveRecord::Schema.define(version: 20170428081830) do
 
   create_table "friends", force: :cascade do |t|
     t.string   "email"
@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(version: 20170427132017) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.index ["user_id"], name: "index_geo_histories_on_user_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_images_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

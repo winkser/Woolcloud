@@ -14,6 +14,9 @@ before_action :authenticate_user!
   end
 
   def gallery
+    @user = User.find_by_email(current_user[:email])
+    @images = @user.images.all
+    @image = @user.images.build
   end
 
   def cloud
