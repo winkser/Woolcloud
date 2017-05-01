@@ -19,8 +19,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
         sign_up(resource_name, resource)
         respond_with resource, location: after_sign_up_path_for(resource)
 #Create work directory!
-Dir.mkdir("/home/winkser/website/woolcloud/public/users/#{resource.email}")
-puts "/home/winkser/website/woolcloud/public/users/#{resource.email}"
+Dir.mkdir("#{Rails.root}/public/users/#{resource.email}")
+puts "#{Rails.root}/public/users/#{resource.email}"
 puts "Work dir created!"
 
       else
