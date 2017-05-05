@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
+
   root to: 'pages#index'
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
@@ -8,11 +10,12 @@ Rails.application.routes.draw do
   post 'pages/friends', to: "friends#friends_add", as: "pages_friends_add"
   delete 'pages/friends/:id', to: "friends#friends_drop", as: "pages_friends_drop" 
 
-  get 'pages/messages'
+  get 'pages/messages', to: "messages#messages", as: "pages_messages"
+  get 'pages/messages/send_to/:email', :constraints => { :email => /.*/ }, to: "messages#send_to", as: "pages_messages_send_to"
 
   get 'pages/friends_on_map'
 
-  get 'pages/galleries'
+  get 'pages/galleries', to: "galleries#galleries", as: "pages_galleries"
   post 'pages/galleries/create/image', to: "galleries#create_image", as: "pages_galleries_create_image"
   get 'pages/galleries/delete/:id', to: "galleries#delete", as: "pages_galleries_delete"
 
@@ -25,7 +28,7 @@ Rails.application.routes.draw do
   get 'pages/cloud/newfolder', to: "clouds#newfolder", as: "pages_cloud_newfolder"
   
 
-  get 'pages/settings'
+  get 'pages/settings', to: "settings#settings", as: "pages_settings"
   post 'pages/settings/create/avatar', to: "settings#create_avatar", as: "pages_settings_create_avatar"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

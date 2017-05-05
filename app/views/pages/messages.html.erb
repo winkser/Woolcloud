@@ -1,4 +1,10 @@
 <%= render 'pages/header' %>
 
-<h1>Pages#messages</h1>
-<p>Find me in app/views/pages/messages.html.erb</p>
+<h1>Messages.</h1>
+<% @friends.each do |f| %>
+<%= f.email %><%= link_to 'Send_message', pages_messages_send_to_path(f.email) %><br>
+<% end %>
+<% if @friends.empty? then %>
+<%= link_to "Friend not found, add friends?", pages_friends_path %>
+<% end %>
+

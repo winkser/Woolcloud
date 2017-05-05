@@ -1,0 +1,23 @@
+<%= render 'pages/header' %>
+
+
+<div class = "container">
+
+  <div class = "block_for_messages">
+    <p>Dialog with <b id="send_to"><%= @send_to.email %></b></p>
+  </div>
+
+  <div class = "message_box">
+    
+    <div class = "message_box">
+      <b id="received_message_sender" style = "background:#BDBDBD;">Sender</b>:
+      <b id="received_message_text" style = "background:#A1FA58;">Wait message...</b>
+    </div>
+
+  </div>
+</div>
+<br>
+
+<p>Message:<%= text_field_tag 'text' %>
+<%= button_tag 'Send', name: "send_message", id: "send_message", onClick: "send_message()" %></p><br>
+

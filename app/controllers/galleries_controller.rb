@@ -1,5 +1,12 @@
 class GalleriesController < ApplicationController
 
+  def galleries
+    @user = User.find_by_email(current_user[:email])
+    @images = @user.images.all
+    @image = @user.images.build
+    render template: "pages/galleries.html.erb"
+  end
+
   def create_image
    @user = User.find_by_email(current_user[:email])
    @image = @user.images.build(params.require(:image).permit(:name, :file))

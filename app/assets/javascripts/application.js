@@ -15,3 +15,29 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+(function() {
+  //function for load code after body html!
+document.addEventListener("DOMContentLoaded", function(event) { 
+
+document.onkeyup = function (e) {
+    e = e || window.event;
+    if (e.keyCode === 13) {
+      document.getElementById('send_message').click();
+    }
+}
+
+document.getElementById('send_message').onclick = function() {
+
+    var message = {
+    text: document.getElementById('text').value,
+    send_to: document.getElementById('send_to').innerHTML
+ };
+    App.messages.action_on_client(message);
+    document.getElementById('text').value = "";
+ };
+
+});
+
+}).call(this);
+

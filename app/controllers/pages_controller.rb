@@ -14,16 +14,11 @@ before_action :authenticate_user!
   end
 
   def galleries
-    @user = User.find_by_email(current_user[:email])
-    @images = @user.images.all
-    @image = @user.images.build
   end
 
   def cloud
   end
 
   def settings
-   @current_user = current_user
-   @user = User.new
   end
 end
