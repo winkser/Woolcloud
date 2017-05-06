@@ -3,6 +3,7 @@ class SettingsController < ApplicationController
   def settings
    @current_user = current_user
    @user = User.new
+   render template: pages_settings_path
   end
 
   def create_avatar
