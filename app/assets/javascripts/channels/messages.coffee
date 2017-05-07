@@ -8,11 +8,17 @@ App.messages = App.cable.subscriptions.create "MessagesChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
+
+    if document.getElementById('current_user').innerHTML != data['sender']  
+      document.getElementById('message_sender').innerHTML = "★Message from "+"<a href='/pages/messages/send_to/" + data['sender']+"'>"+data['sender']+"</a>★" 
+
     console.log data
 
     if document.getElementById('send_to').innerHTML == data['sender'] 
       document.getElementById('received_message_sender').innerHTML = data['sender'] 
       document.getElementById('received_message_text').innerHTML = data['text'] 
+
+
     # Called when there's incoming data on the websocket for this channel
 
   action_on_client: (data) ->

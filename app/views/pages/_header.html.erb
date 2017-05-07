@@ -1,9 +1,11 @@
-<h2>Welcome:<%= current_user.email %>!</h2>
+<h1>Woolcloud</h1>
+<h4>Incoming information: <b id="message_sender" style="background:#9AFE2E;"></b><b id="message_text" style="background:#9AFE2E;"></b></h4>
+<h2>Welcome:<b id="current_user"><%= current_user.email %></b>!</h2>
 <h3>MENU:</h3>
 <ul>
 <li><%= link_to "Index", pages_index_path %></li>
 <li><%= link_to "Friends", pages_friends_path %></li>
-<li><%= link_to "Messages", pages_messages_path %></li>
+<li><%= link_to "Messages", pages_messages_path %> <b id="menu_message_sender"></b> <b id="menu_message_text"></b></li>
 <li><%= link_to "Friends on map", pages_friends_on_map_path %></li>
 <li><%= link_to "Gallery", pages_galleries_path %></li>
 <li><%= link_to "Cloud", pages_cloud_path %></li>
