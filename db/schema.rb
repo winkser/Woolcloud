@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170428081830) do
+ActiveRecord::Schema.define(version: 20170507150812) do
+
+  create_table "dialogs", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "dialogs_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "dialog_id"
+    t.index ["dialog_id"], name: "index_dialogs_users_on_dialog_id"
+    t.index ["user_id"], name: "index_dialogs_users_on_user_id"
+  end
 
   create_table "friends", force: :cascade do |t|
     t.string   "email"
@@ -40,6 +53,15 @@ ActiveRecord::Schema.define(version: 20170428081830) do
     t.datetime "file_updated_at"
     t.integer  "user_id"
     t.index ["user_id"], name: "index_images_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "dialog_id"
+    t.string   "email"
+    t.string   "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dialog_id"], name: "index_messages_on_dialog_id"
   end
 
   create_table "users", force: :cascade do |t|

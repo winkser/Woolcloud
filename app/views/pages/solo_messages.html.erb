@@ -1,10 +1,16 @@
 <%= render 'pages/header' %>
-
+<h2 id="current_page">Dialog</h2>
 
 <div class = "container">
 
   <div class = "block_for_messages">
     <p>Dialog with <b id="send_to"><%= @send_to.email %></b></p>
+  </div>
+
+  <div class = "message_history">
+   <% @messages.each do |f| %>
+     <p><%= f.email %>: <%= f.message %></p>
+   <% end %>
   </div>
 
   <div class = "message_box">

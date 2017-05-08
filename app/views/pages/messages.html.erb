@@ -1,10 +1,10 @@
 <%= render 'pages/header' %>
+<h2 id="current_page">Messages</h2>
+  <% @friends.each do |f| %>
+    <%= f.email %><%= link_to 'Send_message', pages_messages_send_to_path(f.email) %><br>
+  <% end %>
 
-<h1>Messages.</h1>
-<% @friends.each do |f| %>
-<%= f.email %><%= link_to 'Send_message', pages_messages_send_to_path(f.email) %><br>
-<% end %>
-<% if @friends.empty? then %>
-<%= link_to "Friend not found, add friends?", pages_friends_path %>
-<% end %>
+  <% if @friends.empty? then %>
+    <%= link_to "Friend not found, add friends?", pages_friends_path %>
+  <% end %>
 

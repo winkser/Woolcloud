@@ -1,9 +1,8 @@
 <%= render 'pages/header' %>
-
-<h1>Pages#cloud</h1>
-<h2>Navigation:</h2>
-<%= link_to "Home", pages_cloud_home_path %>
-<%= link_to "Back", pages_cloud_back_path %>
+<h2 id="current_page">Cloud</h2>
+<h3>Navigation:</h3>
+  <%= link_to "Home", pages_cloud_home_path %>
+  <%= link_to "Back", pages_cloud_back_path %>
 <h3>Action:</h3>
         <%= form_tag({controller: "clouds", action: "newfolder"}, method: "get") do %>
         <%= label_tag "Create folder:" %>

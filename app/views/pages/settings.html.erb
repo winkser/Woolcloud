@@ -1,6 +1,6 @@
 <%= render 'pages/header' %>
+<h2 id="current_page">Settings</h2>
 
-<h1>Settings</h1>
 <h4>Settings avatar:</h4>
 <%= image_tag @current_user.avatar.url(:medium) %><br>
 <%= form_for @user, url: pages_settings_create_avatar_path, html: { multipart: true } do |form| %>

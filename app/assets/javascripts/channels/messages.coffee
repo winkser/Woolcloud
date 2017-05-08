@@ -14,9 +14,10 @@ App.messages = App.cable.subscriptions.create "MessagesChannel",
 
     console.log data
 
-    if document.getElementById('send_to').innerHTML == data['sender'] 
-      document.getElementById('received_message_sender').innerHTML = data['sender'] 
-      document.getElementById('received_message_text').innerHTML = data['text'] 
+    if document.getElementById('current_page').innerHTML == "Dialog" 
+      if document.getElementById('send_to').innerHTML == data['sender'] 
+        document.getElementById('received_message_sender').innerHTML = data['sender'] 
+        document.getElementById('received_message_text').innerHTML = data['text'] 
 
 
     # Called when there's incoming data on the websocket for this channel
